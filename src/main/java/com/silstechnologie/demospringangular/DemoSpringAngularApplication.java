@@ -67,7 +67,7 @@ public class DemoSpringAngularApplication {
                 for(int i = 0; i< 10; i++){
                     int index = random.nextInt(paymentTypes.length);
                     Payment payment = Payment.builder()
-                            .amount(1000+(int) (Math.random()+2000))
+                            .amount(1000+(int) (Math.random()*2000))
                             .type(paymentTypes[index])
                             .status(PaymentStatus.CREATED)
                             .datePaiement(LocalDate.now())
