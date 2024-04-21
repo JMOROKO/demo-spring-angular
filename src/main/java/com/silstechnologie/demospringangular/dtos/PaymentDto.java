@@ -1,21 +1,18 @@
-package com.silstechnologie.demospringangular.entities;
+package com.silstechnologie.demospringangular.dtos;
 
+import com.silstechnologie.demospringangular.entities.PaymentStatus;
+import com.silstechnologie.demospringangular.entities.PaymentType;
+import com.silstechnologie.demospringangular.entities.Student;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 
-@Entity
 @NoArgsConstructor @AllArgsConstructor @Getter @Setter @ToString @Builder
-public class Payment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PaymentDto {
     private Long id;
     private LocalDate datePaiement;
     private double amount;
     private PaymentType type;
     private PaymentStatus status;
-    private String file;
-    @ManyToOne
-    private Student student;
 }
