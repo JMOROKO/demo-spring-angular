@@ -1,5 +1,6 @@
 package com.silstechnologie.demospringangular.services;
 
+import com.silstechnologie.demospringangular.dtos.NewPaymentDto;
 import com.silstechnologie.demospringangular.entities.Payment;
 import com.silstechnologie.demospringangular.entities.PaymentStatus;
 import com.silstechnologie.demospringangular.entities.PaymentType;
@@ -33,8 +34,9 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    public Payment savePayment(@RequestParam MultipartFile file, LocalDate datePayment, double amount, PaymentType type, String studentCode)
+    public Payment savePayment(@RequestParam MultipartFile file, NewPaymentDto newPaymentDto)
             throws IOException {
+
 
         //identification du dossier de sauvegarde des fichiers "enset-data/payments"
         //c'est ça la bonne pratique
@@ -54,14 +56,14 @@ public class PaymentService {
         Files.copy(file.getInputStream(), filePath);
 
         //recherche et création de l'objet student
-        Student student = studentRepository.findByCode(studentCode);
+        Student student = studentRepository.findByCode(newPaymentDto.getStudentCode());
 
         //creation de l'objet payment
         Payment payment = Payment.builder()
-                .datePaiement(datePayment)
-                .type(type)
+                .datePaiement(newPaymentDto.getDatePaiement())
+                .type(newPaymentDto.getType())
                 .student(student)
-                .amount(amount)
+                .amount(newPaymentDto.getAmount())
                 .file(filePath.toUri().toString())
                 .status(PaymentStatus.CREATED)
                 .build();

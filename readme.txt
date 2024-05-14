@@ -14,3 +14,9 @@
 --no-standalone => il faut utiliser les modules
 10- installation de angular materiel
 ng add @angular/material => permet de mettre à jour tous les fichier qu'il faut mettre a jour
+11- Comment générer une variable d'environnement
+ng g environments
+12- Comment creer les models et les enum
+13- Comment creer le service de student
+14- Comment creer la page student detail
+

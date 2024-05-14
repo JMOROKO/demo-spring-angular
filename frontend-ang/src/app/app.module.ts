@@ -29,6 +29,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatTable, MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {MatSort, MatSortModule} from "@angular/material/sort";
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { NewPaymentComponent } from './new-payment/new-payment.component';
+import {MatDatepickerInput, MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelect, MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -41,7 +46,9 @@ import {MatSort, MatSortModule} from "@angular/material/sort";
     LoginComponent,
     StudentsComponent,
     PaymentsComponent,
-    DashboardComponent
+    DashboardComponent,
+    StudentDetailsComponent,
+    NewPaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +66,10 @@ import {MatSort, MatSortModule} from "@angular/material/sort";
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     provideAnimationsAsync(),

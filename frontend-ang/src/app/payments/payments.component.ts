@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {environment} from "../../environments/environment";
+import {StudentService} from "../services/student.service";
 
 @Component({
   selector: 'app-payments',
@@ -16,10 +18,10 @@ export class PaymentsComponent implements OnInit{
   //aller chercher dans la partie HTML un objet de type MatPaginator et l'affecté à paginator
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private http: HttpClient) {
+  constructor(private studentService: StudentService) {
   }
   ngOnInit(): void {
-    this.http.get("http://localhost:8021/payments")
+    this.studentService.getAllPayment()
       .subscribe({
         next: value => {
           this.payments = value;

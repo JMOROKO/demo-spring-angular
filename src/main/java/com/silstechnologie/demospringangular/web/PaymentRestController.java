@@ -1,5 +1,6 @@
 package com.silstechnologie.demospringangular.web;
 
+import com.silstechnologie.demospringangular.dtos.NewPaymentDto;
 import com.silstechnologie.demospringangular.entities.Payment;
 import com.silstechnologie.demospringangular.entities.PaymentStatus;
 import com.silstechnologie.demospringangular.entities.PaymentType;
@@ -65,10 +66,11 @@ public class PaymentRestController {
         return paymentRepository.save(payment);
     }
 
+    //@RequestParam("file")  file = nom du paramètre qui vient de la query
     @PostMapping(path="/payments", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Payment savePayment(@RequestParam MultipartFile file, LocalDate datePayment, double amount, PaymentType type, String studentCode)
+    public Payment savePayment(@RequestParam("file") MultipartFile file, NewPaymentDto newPaymentDto)
             throws IOException {
-        return this.paymentService.savePayment(file, datePayment, amount, type, studentCode);
+        return this.paymentService.savePayment(file, newPaymentDto);
     }
 
     // POUR définir plusieurs type de fichier retourné il faut produces = {MediaType.APPLICATION_PDF_VALUE, autre type}
