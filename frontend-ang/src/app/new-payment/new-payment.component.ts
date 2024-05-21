@@ -14,6 +14,7 @@ export class NewPaymentComponent implements OnInit{
   studentCode!: string;
   paymentTypes: string[] = [];
   pdfFileURL!: string;
+  showSpinner: boolean = false;
 
   ngOnInit(): void {
     for(let element in PaymentType){
@@ -50,10 +51,11 @@ export class NewPaymentComponent implements OnInit{
   }
 
   savePayment() {
+    this.showSpinner = true;
     let date = new Date(this.paymentFormGroup.value.date);
     let formatedDate = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
     let formData = new FormData();
-    formData.set('date', formatedDate);
+    formData.set('date', formatedDate); //1:55:34
     formData.set('amount', this.paymentFormGroup.value.amount);
     formData.set('type', this.paymentFormGroup.value.type);
     formData.set('studentCode', this.paymentFormGroup.value.studentCode);
@@ -63,10 +65,16 @@ export class NewPaymentComponent implements OnInit{
       .subscribe({
         next: value => {
           alert("Saved successfully")
+          this.showSpinner = false;
         },
         error: err => {
           console.log(err)
+          this.showSpinner = false;
         }
       })
+  }
+
+  afterLoadComplete($event: any) {
+    console.log($event);
   }
 }

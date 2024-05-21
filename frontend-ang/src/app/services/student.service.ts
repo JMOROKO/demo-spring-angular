@@ -22,6 +22,10 @@ export class StudentService {
     return this.http.get<Array<Payment>>(`${environment.backendHost}/students/${code}/payments`);
   }
   savePayment(formData: any): Observable<Payment>{
-    return this.http.post<Payment>(`${environment.backendHost}/payments`, formData);
+    return this.http.post<Payment>(`${environment.backendHost}/payments`, formData); ///
+  }
+
+  getPaymentDetails(paymentId: number) {
+    return this.http.get(`${environment.backendHost}/payementFile/${paymentId}/file`, {responseType: 'blob'}); //{responseType: 'blob'} pour spécifier qu'il s'agit d'un fichier
   }
 }

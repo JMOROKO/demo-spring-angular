@@ -34,6 +34,9 @@ import { NewPaymentComponent } from './new-payment/new-payment.component';
 import {MatDatepickerInput, MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelect, MatSelectModule} from "@angular/material/select";
+import {PdfViewerModule} from "ng2-pdf-viewer";
+import {MatProgressSpinner, MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import {MatSelect, MatSelectModule} from "@angular/material/select";
     PaymentsComponent,
     DashboardComponent,
     StudentDetailsComponent,
-    NewPaymentComponent
+    NewPaymentComponent,
+    PaymentDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,9 @@ import {MatSelect, MatSelectModule} from "@angular/material/select";
     MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    PdfViewerModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideAnimationsAsync(),
